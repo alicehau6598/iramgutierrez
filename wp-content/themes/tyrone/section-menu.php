@@ -20,9 +20,9 @@
             <nav>
                 <a href="#section1"><span class="menu_name">SOBRE MÍ</span><span class="fa fa-home"></span> </a>
                 <a href="#section2"><span class="menu_name">EMPLEO Y FORMACIÓN</span><span class="fa fa-newspaper-o"></span> </a>
-                <a href="#section4"><span class="menu_name">EXPERIENCIA</span><span class="fa fa-diamond"></span> </a>
-                <a href="#section5"><span class="menu_name">PROYECTOS</span><span class="fa fa-archive"></span> </a>
-                <a href="#section3"><span class="menu_name">EQUIPO</span><span class="fa fa-users"></span> </a>
+                <a href="#section3"><span class="menu_name">EXPERIENCIA</span><span class="fa fa-diamond"></span> </a>
+                <a href="#section4"><span class="menu_name">PROYECTOS</span><span class="fa fa-archive"></span> </a>
+                <a href="#section5"><span class="menu_name">EQUIPO</span><span class="fa fa-users"></span> </a>
                 <a href="#section6"><span class="menu_name">SERVICIOS</span><span class="fa fa-laptop"></span> </a>
                 <!--<a href="#section7"><span class="menu_name">PRODUCTOS Y PAQUETES</span><span class="fa fa-money"></span> </a>-->
                 <a href="#section7"><span class="menu_name">CONTACTO</span><span class="fa fa-paper-plane"></span> </a>

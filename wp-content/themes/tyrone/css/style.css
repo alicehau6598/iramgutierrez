@@ -3313,6 +3313,10 @@ screen and (max-height: 300px) {
 .colors-list a.orange {
     background-color: #EC6F69;
 }
+
+.text-uppercase{
+    text-transform: uppercase !important; 
+}
 /*--------------------------------------------------
 ------------------ Media Queries  ------------------
 ---------------------------------------------------*/

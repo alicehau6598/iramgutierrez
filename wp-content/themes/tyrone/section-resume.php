@@ -7,6 +7,16 @@ $jobs = new WP_Query(
         'order' => 'desc'
     ]
 );
+
+$schools = new WP_Query(
+    [
+        'post_type' => 'school',
+        'meta_key'=>'school_init_date',  
+        'order' => 'desc'
+    ]
+);
+
+
 ?>
 
 <!-- Resume Section -->
@@ -36,7 +46,7 @@ $jobs = new WP_Query(
                                             <div class="resume-tag">
                                                 <span class="fa fa-briefcase"></span>
                                                 <div class="resume-date">
-                                                    <span><?php echo get_date($post_meta['job_init_date'][0] , 'm - Y')?></span>
+                                                    <span><?php echo get_date($post_meta['job_init_date'][0] , 'Y')?></span>
                                                     <div class="separator"></div>
                                                     <span>
                                                     <?php 
@@ -46,7 +56,7 @@ $jobs = new WP_Query(
                                                     }
                                                     else
                                                     {
-                                                        echo get_date($post_meta['job_end_date'][0] , 'm - Y');
+                                                        echo get_date($post_meta['job_end_date'][0] , 'Y');
                                                     }
                                                     ?>
                                                     </span>
@@ -64,52 +74,62 @@ $jobs = new WP_Query(
                                     <?php 
                                     }
                                     ?>
-                                    <!--<li>
-                                        <div class="resume-tag">
-                                            <span class="fa fa-briefcase"></span>
-                                            <div class="resume-date">
-                                                <span>2011</span>
-                                                <div class="separator"></div>
-                                                <span>2015</span>
-                                            </div>
-                                        </div>
-                                        <div class="timeline-item">
-                                            <span class="timeline-location"><i class="fa fa-map-marker"></i>Distrito Federal</span>
-                                            <h3 class="timeline-header">DESARROLLADOR WEB</h3>
-                                            <div class="timeline-body">
-                                                <h4>CLICKER 360</h4>
-                                                <span>Desarrollo de múltiples sistemas y aplicaciones enfocadas al marketing digital.</span>
-                                            </div>
-                                        </div>
-                                    </li>-->
                                 </ul>
                             <?php 
                             }
                             ?>
-                            <ul class="resume" >
-                                <li class="time-label">
-                                    <span class="content-title">FORMACIÓN</span>
-                                </li>
-                                <li>
-                                    <div class="resume-tag">
-                                        <span class="fa fa-graduation-cap"></span>
-                                        <div class="resume-date">
-                                            <span>2006</span>
-                                            <div class="separator"></div>
-                                            <span>2010</span>
-                                        </div>
-                                    </div>
-                                    <div class="timeline-item">
-                                        <span class="timeline-location"><i class="fa fa-map-marker"></i>ESTADO DE MEXICO</span>
-                                        <h3 class="timeline-header">INGENIERO EN COMPUTACIÓN</h3>
-                                        <div class="timeline-body">
-                                            <h4>UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO</h4>
-                                            <span><!--Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem.--></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- End Resume timeline -->
-                            </ul>
+
+                            <?php     
+                            if($schools->have_posts())
+                            {
+                            ?>
+                                <ul class="resume" >
+                                    <li class="time-label">
+                                        <span class="content-title">FORMACIÓN</span>
+                                    </li>
+                                    <?php 
+                                    while($schools->have_posts()){
+                                        $schools->the_post();
+
+                                        $post_meta = get_post_custom($post->ID);
+                                    ?>  
+                                        <li>
+                                            <div class="resume-tag">
+                                                <span class="fa fa-graduation-cap"></span>
+                                                <div class="resume-date">
+                                                     <span><?php echo get_date($post_meta['school_init_date'][0] , 'Y')?></span>
+                                                    <div class="separator"></div>
+                                                    <span>
+                                                    <?php 
+                                                    if( !empty( $post_meta['school_current'][0] ) )
+                                                    {
+                                                        echo "ACTUAL";
+                                                    }
+                                                    else
+                                                    {
+                                                        echo get_date($post_meta['school_end_date'][0] , 'Y');
+                                                    }
+                                                    ?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-item">
+                                                <span class="timeline-location"><i class="fa fa-map-marker"></i><?php echo $post_meta['school_city'][0]; ?></span>
+                                                <h3 class="timeline-header"><?php echo $post_meta['school_degree'][0]; ?></h3>
+                                                <div class="timeline-body">
+                                                    <h4><?php echo $post_meta['school'][0]; ?></h4>
+                                                    <span><!--Lorem ipsum dolor sit amet, consectetur adipiscingVivam sit amet ligula non lectus cursus egestas. Cras erat lorem.--></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- End Resume timeline -->                                    
+                                    <?php 
+                                    }
+                                    ?>
+                                </ul>
+                            <?php 
+                            }
+                            ?>
                         </div>
                         <!-- End Resume Wrapper -->
                     </div>
